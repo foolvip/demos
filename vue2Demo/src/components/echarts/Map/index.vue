@@ -23,6 +23,25 @@ export default {
       // 2. 注册可用的地图，只在 geo 组件或者map图表类型中使用
       echarts.registerMap('china', chinamap); // 用导入的json文件注册一个name:china的地图组件
       const option = {
+        // visualMap: {
+        //     min: 0,
+        //     max: 10000,
+        //     // text: ['高', '低'],
+        //     realtime: false,
+        //     calculable: false,
+        //     itemWidth: 16,
+        //     itemHeight: 79,
+        //     left: 0,
+        //     top: 40,
+        //     inverse: true,
+        //     orient: 'horizontal',
+        //     inRange: {
+        //         color: ['#E6F0FF', '#0955CE']
+        //     }
+        // },
+        // dataZoom: {
+        //     type: 'inside'
+        // },
         series: [
           {
             type: 'map',
@@ -42,6 +61,27 @@ export default {
                 areaColor: '#D8E5FB',
                 borderColor: '#fff',
                 borderWidth: 1.5,
+                // areaColor: {
+                //     type: 'radial',
+                //     x: 0.5,
+                //     y: 0.5,
+                //     r: 0.8,
+                //     colorStops: [
+                //         {
+                //             offset: 0,
+                //             color: '#0063F2' // 0% 处的颜色
+                //         },
+                //         {
+                //             offset: 1,
+                //             color: '#D1E2FF' // 100% 处的颜色
+                //         }
+                //     ],
+                //     globalCoord: false // 缺省为 false
+                // },
+                // shadowColor: 'rgba(128, 217, 248, 1)', // 文字块的背景阴影颜色
+                // shadowOffsetX: -2,
+                // shadowOffsetY: 2,
+                // shadowBlur: 10
               },
               emphasis: {
                 areaColor: '#02102b',
@@ -50,6 +90,24 @@ export default {
                 },
               },
             },
+            // markPoint: { //标记点
+            //     // symbol设置的为小旗子图片
+            //     symbol: `image://${flagImg}`,
+            //     symbolSize: 14, //图形大小
+            //     label: {
+            //     normal: {
+            //         formatter: function(params) {
+            //         console.log(params);
+            //         return params.name;
+            //         },
+            //         show: false,
+            //     },
+            //     emphasis: {
+            //         show: false,
+            //     }
+            //     },
+            //     data: [{ name: '河南省', coord: [113.619717, 33.902648] }]
+            // },
             data: [{ name: '四川省', value: 22 }],
           },
         ],
