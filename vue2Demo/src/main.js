@@ -7,6 +7,8 @@ import router from './router';
 import '@/style/index.less';
 import '@/assets/main.css';
 
+Vue.config.devtools = true;
+
 new Vue({
   router,
   store,
