@@ -1,23 +1,12 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-
-        <nav>
-          <router-link to="/">Home</router-link>
-          <router-link to="/about">About</router-link>
-          <router-link to="/echarts">Echarts</router-link>
-        </nav>
-      </div>
+      <nav>
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+        <router-link to="/echarts">Echarts</router-link>
+      </nav>
     </header>
-
     <router-view />
   </div>
 </template>
@@ -35,7 +24,7 @@ header {
 
 nav {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 0.2rem;
   font-size: 12px;
   text-align: center;
 }
