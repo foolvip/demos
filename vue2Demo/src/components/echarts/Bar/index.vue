@@ -25,7 +25,7 @@ export default {
   },
 
   mounted() {
-    this.init(); // 初始化地图
+    this.init(); // 初始图表
   },
   methods: {
     init() {
@@ -36,6 +36,10 @@ export default {
     setOption(data = [120, 200, 150, 80, 70, 110, 130]) {
       const option = {
         color: ['#0063F2'],
+        legend: {
+          // left: 'center',
+          // bottom: 0,
+        },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -57,7 +61,7 @@ export default {
         },
         series: [
           {
-            data,
+            name: '参保量', // 不设置name则会不显示图例legend
             type: 'bar',
             showBackground: true,
             backgroundStyle: {
@@ -66,6 +70,7 @@ export default {
             itemStyle: {
               borderRadius: 2,
             },
+            data,
           },
         ],
       };

@@ -198,60 +198,60 @@ export default {
         // 背景颜色
         backgroundColor: '#00477f',
         geo: {
-            map: 'china',
-            layoutCenter: ['50%', '50%'], // 地图所在的位置
-            layoutSize: 600, // 地图视图大小
-            roam: true, // 开启地图缩放和移动
-            label: {
-                // 通常状态下的样式
-                normal: {
-                    show: true,
-                    textStyle: {
-                        color: '#fff',
-                    },
-                },
-                // 鼠标放上去的样式
-                emphasis: {
-                    textStyle: {
-                        color: '#fff',
-                    },
-                },
+          map: 'china',
+          layoutCenter: ['50%', '50%'], // 地图所在的位置
+          layoutSize: 600, // 地图视图大小
+          roam: true, // 开启地图缩放和移动
+          label: {
+            // 通常状态下的样式
+            normal: {
+              show: true,
+              textStyle: {
+                color: '#fff',
+              },
             },
-            // 地图区域的样式设置
-            itemStyle: {
-                normal: {
-                    borderColor: '#addef8',
-                    borderWidth: 1,
-                    areaColor: {
-                        type: 'radial',
-                        x: 0.5,
-                        y: 0.5,
-                        r: 0.8,
-                        colorStops: [
-                            {
-                                offset: 0,
-                                color: '#61bba1', // 0% 处的颜色
-                            },
-                            {
-                                offset: 1,
-                                color: '#61bba1', // 100% 处的颜色
-                            },
-                        ],
-                        globalCoord: false, // 缺省为 false
-                    },
-                    shadowColor: 'rgba(128, 217, 248, 1)', // 文字块的背景阴影颜色
-                    shadowOffsetX: -2,
-                    shadowOffsetY: 2,
-                    shadowBlur: 10,
-                },
-                // 鼠标放上去高亮的样式
-                emphasis: {
-                    areaColor: '#addef8',
-                    borderWidth: 0,
-                },
+            // 鼠标放上去的样式
+            emphasis: {
+              textStyle: {
+                color: '#fff',
+              },
             },
+          },
+          // 地图区域的样式设置
+          itemStyle: {
+            normal: {
+              borderColor: '#addef8',
+              borderWidth: 1,
+              areaColor: {
+                type: 'radial',
+                x: 0.5,
+                y: 0.5,
+                r: 0.8,
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: '#61bba1', // 0% 处的颜色
+                  },
+                  {
+                    offset: 1,
+                    color: '#61bba1', // 100% 处的颜色
+                  },
+                ],
+                globalCoord: false, // 缺省为 false
+              },
+              shadowColor: 'rgba(128, 217, 248, 1)', // 文字块的背景阴影颜色
+              shadowOffsetX: -2,
+              shadowOffsetY: 2,
+              shadowBlur: 10,
+            },
+            // 鼠标放上去高亮的样式
+            emphasis: {
+              areaColor: '#addef8',
+              borderWidth: 0,
+            },
+          },
         },
-    }
+      };
       // 4. 显示地图
       this.myChart.setOption(option); // 用 option 和 option2 效果一样
     },
