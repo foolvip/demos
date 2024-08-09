@@ -24,10 +24,10 @@ export default {
 .customBar {
   display: flex;
   align-items: center;
-  width: 100%;
   padding: 0.12rem;
   background-color: #f7f9ff;
   border-radius: 0.04rem;
+
   .titleIcon {
     margin-right: 0.1rem;
     width: 0.32rem;
@@ -40,23 +40,28 @@ export default {
     border-radius: 0.04rem;
     background-color: #376df7;
   }
+
   .rateWrap {
     flex: 1;
+
     .top {
       display: flex;
       justify-content: space-between;
       font-size: 0.12rem;
       line-height: 0.16rem;
       color: #7b7b84;
+
       .sex {
         margin-right: 0.04rem;
         font-weight: 500;
         color: #3e3e40;
       }
+
       .num {
         position: relative;
         color: #376df7;
         margin-right: 0.06rem;
+
         &::after {
           position: absolute;
           top: 50%;
@@ -69,16 +74,20 @@ export default {
         }
       }
     }
+
     .bottom {
       display: grid;
       grid-column-gap: 2%;
       margin-top: 0.04rem;
+
       .bar {
         position: relative;
+
         &.left {
           background: #0063f2;
           border-top-left-radius: 0.04rem;
           border-bottom-left-radius: 0.04rem;
+
           &::after {
             position: absolute;
             top: 0;
@@ -89,10 +98,12 @@ export default {
             background: center/contain url(../../../assets/images/svgs/blue.svg) no-repeat;
           }
         }
+
         &.right {
           background: #f8c541;
           border-top-right-radius: 0.04rem;
           border-bottom-right-radius: 0.04rem;
+
           &::before {
             position: absolute;
             top: 0;
@@ -106,6 +117,7 @@ export default {
       }
     }
   }
+
   .left,
   .right {
     height: 0.08rem;
