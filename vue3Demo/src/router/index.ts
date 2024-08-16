@@ -1,19 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
-import { BaseLayout } from '@/components/layout/index'
+import BasicLayout from '@/components/layout/BasicLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: { name: 'index' }
-  },
+      redirect: { name: 'worktable' }
+    },
     {
       path: '/worktable',
-      name: 'worktable',
-      component: BaseLayout,
+      component: BasicLayout,
       children: [
         {
           path: '',
