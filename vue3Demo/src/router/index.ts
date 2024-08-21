@@ -3,8 +3,9 @@ import HomeView from '@/views/HomeView.vue'
 
 import BasicLayout from '@/components/layout/BasicLayout.vue'
 import ProjectList from '@/views/project/List.vue'
+import ChartEdit from '@/views/chart/Edit.vue'
 
-import { BookOutline, BriefcaseOutline } from '@vicons/ionicons5'
+import { BookOutline, BriefcaseOutline, StatsChartOutline } from '@vicons/ionicons5'
 
 export const routes = [
   {
@@ -38,6 +39,25 @@ export const routes = [
         meta: {
           title: '项目列表',
           icon: BriefcaseOutline
+        }
+      }
+    ],
+    meta: {
+      title: '项目',
+      icon: BriefcaseOutline
+    }
+  },
+  {
+    path: '/chart',
+    // component: BasicLayout,
+    children: [
+      {
+        name: 'chartEdit',
+        path: '/edit',
+        component:() => ChartEdit,
+        meta: {
+          title: '画布编辑',
+          icon: StatsChartOutline
         }
       }
     ],
