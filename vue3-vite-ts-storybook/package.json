@@ -1,8 +1,17 @@
 {
   "name": "vue3-vite-ts-storybook",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
@@ -22,6 +31,7 @@
     "@storybook/test": "^8.4.2",
     "@storybook/vue3": "^8.4.2",
     "@storybook/vue3-vite": "^8.4.2",
+    "@types/node": "^22.9.0",
     "@vitejs/plugin-vue": "^5.1.4",
     "storybook": "^8.4.2",
     "typescript": "~5.6.2",
