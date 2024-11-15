@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from "path";
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
   build: {
     lib: {
       // 入口文件将包含可以由你的包的用户导入的导出
@@ -12,5 +23,24 @@ export default defineConfig({
       name: "mthBusinessCom",
       fileName: (format) => `index.${format}.js`,
     },
+  },
+  resolve: {
+    alias: {
+        '@': resolve(__dirname, 'src')
+    },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
+  },
+  server: {
+    proxy: {
+        '/api': {
+            // target: 'http://localhost:6002',
+            target: 'https://test-web-log-admin.meditrusthealth.com/',
+            changeOrigin: true
+        },
+        '/ic-api': {
+            target: 'https://test-ic.meditrustbroker.com/',
+            changeOrigin: true
+        }
+    }
   }
 })
