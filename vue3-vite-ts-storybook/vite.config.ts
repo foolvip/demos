@@ -40,7 +40,11 @@ export default defineConfig({
         '/ic-api': {
             target: 'https://test-ic.meditrustbroker.com/',
             changeOrigin: true
-        }
+        },
+        '/insure-api': {
+            target: 'https://test-insure-admin.meditrustbroker.com/',
+            changeOrigin: true
+        },
     }
   }
 })

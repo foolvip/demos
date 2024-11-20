@@ -1,5 +1,7 @@
-import http from './http'
+import api from '@/api'
 
 export const bcAddDownload = (reqBodyData = {}, reqHeaders?: object, reqConfig?: object) => {
-  http.post('/ic-api/api/v1/report/download/task/add', reqBodyData, reqHeaders, reqConfig)
+  api.addDownloadTask(reqBodyData,reqHeaders, reqConfig).then((res) => {
+  console.log('res---addDownloadTask---', res)
+})
 }

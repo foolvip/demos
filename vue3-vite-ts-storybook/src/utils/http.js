@@ -69,6 +69,7 @@ axiosInstance.interceptors.response.use(
 )
 
 const ajax = (type, url, params, headers, config) => {
+    console.log('ajax---', params, headers)
     let reqParams = {}
     // codeAllPass为true时，所有业务状态码都会resolve返回，以便处理特殊code状态
     let codeAllPass = (config && config.codeAllPass) || false
@@ -103,11 +104,12 @@ const ajax = (type, url, params, headers, config) => {
         if (headers) {
             axiosParams.headers  = headers
         }
-        axiosParams.headers = {
-        'x-insure-oss-path': '/fxDetails/project',
-        'x-insure-oss-route': 'fxDetails-project',
-        'x-insure-oss-type': 'IC_ADMIN',
-        }
+        console.log('axiosParams---', axiosParams)
+        // axiosParams.headers = {
+        // 'x-insure-oss-path': '/fxDetails/project',
+        // 'x-insure-oss-route': 'fxDetails-project',
+        // 'x-insure-oss-type': 'IC_ADMIN',
+        // }
         axiosInstance(axiosParams)
             .then((res) => {
                 // 对响应数据做点什么
