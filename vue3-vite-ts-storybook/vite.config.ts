@@ -18,6 +18,7 @@ export default defineConfig({
   ],
   build: {
     target: 'es2015',
+    sourcemap: true,
     lib: {
       // 入口文件将包含可以由你的包的用户导入的导出
       entry: resolve(__dirname, "src/index.ts"),
@@ -36,10 +37,6 @@ export default defineConfig({
         '/api': {
             // target: 'http://localhost:6002',
             target: 'https://test-web-log-admin.meditrusthealth.com/',
-            changeOrigin: true
-        },
-        '/ic-api': {
-            target: 'https://test-ic.meditrustbroker.com/',
             changeOrigin: true
         },
         '/insure-api': {

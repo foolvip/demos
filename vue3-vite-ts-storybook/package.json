@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc -b && vite build",
     "release": "release-it",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",

@@ -111,12 +111,22 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, reactive, defineExpose } from 'vue'
+import { onMounted, ref, reactive } from 'vue'
 import api from '@/api'
 import { ElMessage, ElMessageBox } from 'element-plus'
-// import { zeusClick, removeURLParams } from '@/utils/tools'
+import { removeURLParams } from '@/utils/tools'
 // import { useRoute } from 'vue-router'
 // const route = useRoute()
+
+interface DownloadManageProps {
+    userId: string;
+    reqParams?:{[propName: string]: any};
+    reqHeaders?: {[propName: string]: any};
+    config?: {[propName: string]: any};
+}
+const props = withDefaults(defineProps<DownloadManageProps>(), { 
+    userId: '',
+ });
 
 const state = reactive({
     count: 0,
@@ -136,8 +146,9 @@ const queryList = (status = '') => {
     api.queryDownloadTaskList({
         status: status === '0' ? '' : status,
         page: state.page,
-        pageSize: state.pageSize
-    }).then((res) => {
+        pageSize: state.pageSize,
+        userId: props.userId
+    }).then((res: any) => {
         const { data } = res.result || {}
         state.count = data?.count || 0
         state.results = data?.results || []
@@ -150,17 +161,17 @@ const handleClick = () => {
     queryList(state.status)
 }
 
-const currentChange = (val) => {
+const currentChange = (val: number) => {
     state.page = val
     queryList(state.status)
 }
 
-const downloadFile = ({ id, fileUrl, fileName }) => {
+const downloadFile = ({ id, fileUrl }: any) => {
     // zeusClick(route.meta.allPathTitle + '_下载表格',{
     //     bizId: '下载表格',
     //     sceneType: fileName
     // })
-    api.sendEmail({ id, emailType:'02' }).then((res) => {
+    api.sendEmail({ id, emailType:'02' }).then((res: any) => {
         if (res.code === '200000') {
             ElMessage.success('密码已发送到您的邮箱')
             window.open(removeURLParams(fileUrl))
@@ -169,8 +180,8 @@ const downloadFile = ({ id, fileUrl, fileName }) => {
 }
 
 //下载任务重试
-const retryDownloadTask = ({ id, fileName }) => {
-    api.retryDownloadTask({ id }).then((res) => {
+const retryDownloadTask = ({ id }: any) => {
+    api.retryDownloadTask({ id }).then((res: any) => {
         if (res.code === '200000') {
             ElMessage.success('下载任务重试成功')
             handleClick()
@@ -183,8 +194,8 @@ const retryDownloadTask = ({ id, fileName }) => {
 }
 
 //发送邮件
-const sendEmail = ({ id, fileName }) => {
-    api.sendEmail({ id, emailType:'01' }).then((res) => {
+const sendEmail = ({ id }: any) => {
+    api.sendEmail({ id, emailType:'01' }).then((res: any) => {
         if (res.code === '200000') {
             ElMessage.success('邮件发送成功')
         }
@@ -208,7 +219,7 @@ const deleteTaskAll = () => {
         type: 'warning'
     })
         .then(() => {
-            const deletePromises = tasks.map((item) =>
+            const deletePromises = tasks.map((item: {[key: string]: any}) =>
                 api.deleteDownloadTask({ id: item.id })
             )
 
@@ -220,14 +231,14 @@ const deleteTaskAll = () => {
 }
 
 //删除下载
-const deleteTask = ({ id }) => {
+const deleteTask = ({ id }: {id: string}) => {
     ElMessageBox.confirm('是否需要删除该下载任务?', '消息提示', {
         confirmButtonText: '删除',
         cancelButtonText: '取消',
         type: 'warning'
     })
         .then(() => {
-            api.deleteDownloadTask({ id }).then((res) => {
+            api.deleteDownloadTask({ id }).then((res: any) => {
                 if (res.code === '200000') {
                     ElMessage.success('删除成功')
                     handleClick()
@@ -237,7 +248,7 @@ const deleteTask = ({ id }) => {
         .catch(() => {})
 }
 
-defineExpose({ queryList })
+// defineExpose({ queryList })
 </script>
 
 <style lang="less" scoped>
