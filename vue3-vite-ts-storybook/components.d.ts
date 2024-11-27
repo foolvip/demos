@@ -8,10 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./src/components/Button/Button.vue')['default']
-    DownloadList: typeof import('./src/components/DownloadManage/DownloadList.vue')['default']
     DownloadManage: typeof import('./src/components/DownloadManage/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElProgress: typeof import('element-plus/es')['ElProgress']
     ElTable: typeof import('element-plus/es')['ElTable']
@@ -20,7 +18,6 @@ declare module 'vue' {
     ElTabs: typeof import('element-plus/es')['ElTabs']
     Header: typeof import('./src/components/Header/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    Index1: typeof import('./src/components/DownloadManage/index1.vue')['default']
     Page: typeof import('./src/components/Page/Page.vue')['default']
   }
 }
