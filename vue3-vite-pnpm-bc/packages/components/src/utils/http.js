@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ElMessage, ElMessageBox, ElLoading } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 // 创建axios实例
 const axiosInstance = axios.create({
@@ -11,7 +11,6 @@ const axiosInstance = axios.create({
 })
 
 let requestNum = 0 // 当前正在执行的请求数
-let loadingInstance = null // 全屏loading实例
 let loginMessageBoxIsShow = false
 
 // 添加请求拦截器
@@ -23,11 +22,6 @@ axiosInstance.interceptors.request.use(
         // }
 
         requestNum++ // 请求数+1
-
-        // 当config的noLoading设为true时，则该请求不显示loading
-        if (!config.noLoading) {
-            loadingInstance = ElLoading.service({ fullscreen: true })
-        }
 
         return config
     },
@@ -44,7 +38,6 @@ axiosInstance.interceptors.response.use(
         // 请求队列都已完成后，取消loading效果
         if (requestNum <= 0) {
             requestNum = 0
-            loadingInstance && loadingInstance.close()
 
             // // 加个延迟关闭，避免页面闪烁太快，用户体验不好
             // timer = setTimeout(() => {
@@ -58,8 +51,6 @@ axiosInstance.interceptors.response.use(
         // 接口报错的话直接取消loading
         requestNum = 0
 
-        loadingInstance.close()
-
         // 对响应的错误加个type类型，下面捕获到这种类型的错误则判断非前端问题
         return Promise.reject({
             type: 'response',
@@ -69,7 +60,6 @@ axiosInstance.interceptors.response.use(
 )
 
 const ajax = (type, url, params, headers, config) => {
-    console.log('ajax---', params, headers)
     let reqParams = {}
     // codeAllPass为true时，所有业务状态码都会resolve返回，以便处理特殊code状态
     let codeAllPass = (config && config.codeAllPass) || false
@@ -105,11 +95,6 @@ const ajax = (type, url, params, headers, config) => {
             axiosParams.headers  = headers
         }
         console.log('axiosParams---', axiosParams)
-        // axiosParams.headers = {
-        // 'x-insure-oss-path': '/fxDetails/project',
-        // 'x-insure-oss-route': 'fxDetails-project',
-        // 'x-insure-oss-type': 'IC_ADMIN',
-        // }
         axiosInstance(axiosParams)
             .then((res) => {
                 // 对响应数据做点什么
@@ -169,9 +154,9 @@ const ajax = (type, url, params, headers, config) => {
 export default {
     axios: axiosInstance,
     get: (url, params, headers, config) => ajax('get', url, params, headers, config),
-    // delete: (url, params, config) => ajax('delete', url, params, config),
-    // head: (url, params, config) => ajax('head', url, params, config),
     post: (url, params, headers, config) => ajax('post', url, params, headers, config),
     // put: (url, params, config) => ajax('put', url, params, config),
     // patch: (url, params, config) => ajax('patch', url, params, config)
+    // delete: (url, params, config) => ajax('delete', url, params, config),
+    // head: (url, params, config) => ajax('head', url, params, config),
 }
