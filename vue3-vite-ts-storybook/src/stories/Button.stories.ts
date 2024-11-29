@@ -21,6 +21,7 @@ const meta = {
 } satisfies Meta<typeof Button>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
@@ -29,6 +30,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Primary: Story = {
   args: {
+    userId: '123',
     primary: true,
     label: 'Button',
   },
@@ -36,6 +38,7 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
+    userId: '123',
     primary: false,
     label: 'Button',
   },
@@ -43,6 +46,7 @@ export const Secondary: Story = {
 
 export const Large: Story = {
   args: {
+    userId: '123',
     label: 'Button',
     size: 'large',
   },
@@ -50,6 +54,7 @@ export const Large: Story = {
 
 export const Small: Story = {
   args: {
+    userId: '123',
     label: 'Button',
     size: 'small',
   },

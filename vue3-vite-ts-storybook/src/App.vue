@@ -1,6 +1,6 @@
 <template>
   <div class="APP">
-    <SnailButton type="primary" size="large" label="测试" />
+    <SnailButton type="primary" size="large" label="测试" user-id="123"/>
      <SnailHeader :user="{ name: 'zq'}"/>
     <el-button  type="primary" @click="download">下载数据</el-button>
     <el-button  type="primary" @click="openDrawer">下载管理</el-button>

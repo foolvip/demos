@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./src/components/Button/Button.vue')['default']
+    DownLoadList: typeof import('./src/components/DownLoadList/index.vue')['default']
     DownloadManage: typeof import('./src/components/DownloadManage/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElPagination: typeof import('element-plus/es')['ElPagination']
