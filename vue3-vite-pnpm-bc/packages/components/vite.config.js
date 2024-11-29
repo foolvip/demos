@@ -2,24 +2,39 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
-
-// import AutoImport from 'unplugin-auto-import/vite'
-// import Components from 'unplugin-vue-components/vite'
-// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// import {
+//   createStyleImportPlugin,
+//   ElementPlusResolve
+// } from 'vite-plugin-style-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     VueSetupExtend(),
-    // AutoImport({
-    //   resolvers: [ElementPlusResolver()],
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+    // createStyleImportPlugin({
+    //   resolves: [ElementPlusResolve()],
+    //   libs: [
+    //     {
+    //       libraryName: 'element-plus',
+    //       esModule: true,
+    //       resolveStyle: (name) => {
+    //         return `element-plus/theme-chalk/${name}.css`
+    //       }
+    //     }
+    //   ],
     // }),
-    // Components({
-    //   resolvers: [ElementPlusResolver()],
-    // })
   ],
-  base: './',
+  // base: './',
   build: {
     target: 'modules',
     //打包文件目录
@@ -30,7 +45,7 @@ export default defineConfig({
     //cssCodeSplit: true,
     rollupOptions: {
       //忽略打包vue、element-plus
-      external: ['vue', 'element-plus', '@element-plus/icons-vue', /\.scss/, 'axios'],
+      external: ['vue', 'element-plus', 'axios'],
       input: ['index.js'],
       output: [
         {
@@ -66,6 +81,14 @@ export default defineConfig({
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
   },
+  css: {
+    preprocessorOptions: {
+      // 全局样式引入
+      scss: {
+        additionalData: `@use "./src/styles/element.scss" as *;`,
+      },
+    },
+},
   server: {
     proxy: {
         '/insure-api': {

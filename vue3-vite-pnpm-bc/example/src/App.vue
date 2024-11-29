@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { BcDownlaodList } from '@snail/busi-coms';
+// import { BcDownlaodList } from '@snail/busi-coms';
 // import { ref } from 'vue'
 // const value = ref('')
 // const onClick = () => {
