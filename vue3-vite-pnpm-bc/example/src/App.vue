@@ -1,7 +1,7 @@
 <template>
   <div>
     example
-    <BcDownlaodList/>
+    <BcDownlaodList user-id="1964" :req-headers="{ authorization: token }"/>
     <!-- <s-button @click="onClick" type="primary">button</s-button>
     <s-input v-model="value">
       <template #prepend>Http://</template>

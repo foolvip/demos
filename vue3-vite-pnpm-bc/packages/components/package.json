@@ -1,6 +1,6 @@
 {
-  "name": "@snail/busi-coms",
-  "version": "0.0.1-2",
+  "name": "busi-coms-vue3-pnpm",
+  "version": "0.0.1-6",
   "type": "module",
   "main": "./dist/lib/packages/components/index.js",
   "module": "./dist/es/packages/components/index.js",

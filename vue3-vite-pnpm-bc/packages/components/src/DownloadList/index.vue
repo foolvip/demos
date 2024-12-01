@@ -119,10 +119,12 @@ import { removeURLParams } from '@/utils/tools'
 // const route = useRoute()
 
  const props = defineProps({
-  userId: {
-    type: String,
-    default: ''
-  }
+    userId: {
+        type: String,
+        default: ''
+     },
+     reqHeaders: Object || null || undefined,
+     reqConfig: Object || null || undefined
 })
 const state = reactive({
     count: 0,
@@ -144,7 +146,7 @@ const queryList = (status = '') => {
         page: state.page,
         pageSize: state.pageSize,
         userId: props.userId
-    }).then((res) => {
+    }, props.reqHeaders, props.reqConfig).then((res) => {
         const { data } = res.result || {}
         state.count = data?.count || 0
         state.results = data?.results || []
@@ -167,7 +169,7 @@ const downloadFile = ({ id, fileUrl }) => {
     //     bizId: '下载表格',
     //     sceneType: fileName
     // })
-    api.sendEmail({ id, emailType:'02' }).then((res) => {
+    api.sendEmail({ id, emailType:'02' }, props.reqHeaders, props.reqConfig).then((res) => {
         if (res.code === '200000') {
             ElMessage.success('密码已发送到您的邮箱')
             window.open(removeURLParams(fileUrl))
@@ -177,7 +179,7 @@ const downloadFile = ({ id, fileUrl }) => {
 
 //下载任务重试
 const retryDownloadTask = ({ id }) => {
-    api.retryDownloadTask({ id }).then((res) => {
+    api.retryDownloadTask({ id }, props.reqHeaders, props.reqConfig).then((res) => {
         if (res.code === '200000') {
             ElMessage.success('下载任务重试成功')
             handleClick()
@@ -191,7 +193,7 @@ const retryDownloadTask = ({ id }) => {
 
 //发送邮件
 const sendEmail = ({ id }) => {
-    api.sendEmail({ id, emailType:'01' }).then((res) => {
+    api.sendEmail({ id, emailType:'01' }, props.reqHeaders, props.reqConfig).then((res) => {
         if (res.code === '200000') {
             ElMessage.success('邮件发送成功')
         }
@@ -216,7 +218,7 @@ const deleteTaskAll = () => {
     })
         .then(() => {
             const deletePromises = tasks.map((item) =>
-                api.deleteDownloadTask({ id: item.id })
+                api.deleteDownloadTask({ id: item.id }, props.reqHeaders, props.reqConfig)
             )
 
             Promise.all(deletePromises).finally(() => {
@@ -234,7 +236,7 @@ const deleteTask = ({ id }) => {
         type: 'warning'
     })
         .then(() => {
-            api.deleteDownloadTask({ id }).then((res) => {
+            api.deleteDownloadTask({ id }, props.reqHeaders, props.reqConfig).then((res) => {
                 if (res.code === '200000') {
                     ElMessage.success('删除成功')
                     handleClick()
