@@ -17,7 +17,7 @@ const router = createRouter({
         {
           name: 'dashboard',
           path: 'dashboard',
-          component: () => import('@/views/dashbaord/index.vue'),
+          component: () => import('@/views/dashboard/index.vue'),
           meta: {
             title: '首页',
             cached: false, // 页面是否要缓存

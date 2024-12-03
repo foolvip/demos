@@ -1,10 +1,11 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="greetings">
-    <Map />
+  <div class="dashboardPage">
+    <MapChart />
   </div>
 </template>
 <script setup lang="ts">
-import Map from '@/components/echarts/Map/index.vue'
+import MapChart from '@/components/echarts/Map/index.vue'
 defineProps<{
   msg: string
 }>()
