@@ -16,6 +16,7 @@
 }
 </style>
 <script lang="ts" setup>
+// https://www.cnblogs.com/web-learn/p/16107080.html
 import * as echarts from 'echarts'
 import chinaJson from './china.json'
 import { onMounted, ref } from 'vue'
