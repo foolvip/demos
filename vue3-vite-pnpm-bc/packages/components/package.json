@@ -1,6 +1,6 @@
 {
   "name": "busi-coms-vue3-pnpm",
-  "version": "0.0.1-6",
+  "version": "0.0.1-10",
   "type": "module",
   "main": "./dist/lib/packages/components/index.js",
   "module": "./dist/es/packages/components/index.js",

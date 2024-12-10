@@ -11,7 +11,7 @@ importers:
   example:
     dependencies:
       busi-coms-vue3-pnpm:
-        specifier: workspace:0.0.1-6
+        specifier: workspace:0.0.1-10
         version: link:../packages/components
       element-plus:
         specifier: ^2.8.8

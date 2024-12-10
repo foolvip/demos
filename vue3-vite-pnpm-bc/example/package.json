@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "busi-coms-vue3-pnpm": "workspace:0.0.1-6",
+    "busi-coms-vue3-pnpm": "workspace:0.0.1-10",
     "element-plus": "^2.8.8",
     "vue": "^3.5.13"
   },

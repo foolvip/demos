@@ -154,9 +154,12 @@ const queryList = (status = '') => {
     })
 }
 
-const handleClick = () => {
+const handleClick = (pane) => {
+    console.log('Tab-000-点击:', state.status)
+    console.log('Tab-pane-点击:', pane.paneName)
     state.page = 1
-    queryList(state.status)
+    state.status = pane.paneName
+    queryList(pane.paneName)
 }
 
 const currentChange = (val) => {
