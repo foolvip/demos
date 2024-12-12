@@ -19,7 +19,9 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({
+        importStyle: 'sass',
+      })],
     }),
     // createStyleImportPlugin({
     //   resolves: [ElementPlusResolve()],
@@ -84,12 +86,19 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      // 全局样式引入
       scss: {
-        additionalData: `@use "./src/styles/element.scss" as *;`,
+        additionalData: `@use "@/styles/element.scss" as *;`,
       },
     },
   },
+  // css: {
+  //   preprocessorOptions: {
+  //     // 全局样式引入
+  //     scss: {
+  //       additionalData: `@use "./src/styles/element.scss" as *;`,
+  //     },
+  //   },
+  // },
   server: {
     proxy: {
       "/insure-api": {

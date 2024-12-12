@@ -1,6 +1,5 @@
 <template>
-  <div>
-    组件内容
+<el-config-provider namespace="mth-bus-com">
     <el-tabs v-model="state.status" @tab-click="handleClick">
         <el-tab-pane
             :label="`全部（${state.data.sum || 0}）`"
@@ -108,7 +107,8 @@
             @current-change="currentChange"
         />
     </div>
-  </div>
+</el-config-provider>
+
 </template>
 <script name='BcDownlaodList' setup>
 import { onMounted, ref, reactive } from 'vue'
