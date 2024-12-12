@@ -85,17 +85,25 @@ const ajax = (type, url, params, headers, config) => {
     }
 
     return new Promise((resolve, reject) => {
-        const axiosParams = {
+        // const axiosParams = {
+        //     method: type,
+        //     url,
+        //     ...reqParams,
+        //     ...config,
+        // }
+        // if (headers) {
+        //     axiosParams.headers  = {...headers}
+        // }
+        console.log('axiosParams--333-')
+        axiosInstance({
             method: type,
             url,
             ...reqParams,
             ...config,
-        }
-        if (headers) {
-            axiosParams.headers  = headers
-        }
-        console.log('axiosParams---', axiosParams)
-        axiosInstance(axiosParams)
+            headers: {
+                ...(headers || {})
+            }
+        })
             .then((res) => {
                 // 对响应数据做点什么
                 if (
