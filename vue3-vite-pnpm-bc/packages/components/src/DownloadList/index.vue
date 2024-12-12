@@ -64,14 +64,14 @@
                 <template #default="{ row }">
                     <template v-if="row.status === '1'">
                         <el-button
-                            type="text"
+                            link
                             size="small"
                             @click="downloadFile(row)"
                         >
                             下载表格
                         </el-button>
                         <el-button
-                            type="text"
+                            link
                             size="small"
                             @click="sendEmail(row)"
                         >
@@ -80,7 +80,7 @@
                     </template>
                     <template v-if="row.status === '3'">
                         <el-button
-                            type="text"
+                            link
                             size="small"
                             @click="retryDownloadTask(row)"
                         >
@@ -88,7 +88,7 @@
                         </el-button>
                     </template>
                     <el-button
-                        type="text"
+                        link
                         size="small"
                         style="color: #f56c6c"
                         @click="deleteTask(row)"
