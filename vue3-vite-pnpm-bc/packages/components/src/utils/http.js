@@ -60,6 +60,9 @@ axiosInstance.interceptors.response.use(
 )
 
 const ajax = (type, url, params, headers, config) => {
+    if (params.component && typeof params.component === 'function') {
+        return;
+    }
     let reqParams = {}
     // codeAllPass为true时，所有业务状态码都会resolve返回，以便处理特殊code状态
     let codeAllPass = (config && config.codeAllPass) || false
@@ -85,17 +88,7 @@ const ajax = (type, url, params, headers, config) => {
     }
 
     return new Promise((resolve, reject) => {
-        // const axiosParams = {
-        //     method: type,
-        //     url,
-        //     ...reqParams,
-        //     ...config,
-        // }
-        // if (headers) {
-        //     axiosParams.headers  = {...headers}
-        // }
-        console.log('axiosParams--333-')
-        axiosInstance({
+        const axiosParams = {
             method: type,
             url,
             ...reqParams,
@@ -103,7 +96,10 @@ const ajax = (type, url, params, headers, config) => {
             headers: {
                 ...(headers || {})
             }
-        })
+        }
+       
+        console.log('axiosParams--', axiosParams);
+        axiosInstance(axiosParams)
             .then((res) => {
                 // 对响应数据做点什么
                 if (
