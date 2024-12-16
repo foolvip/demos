@@ -47,7 +47,7 @@ export default defineConfig({
     //cssCodeSplit: true,
     rollupOptions: {
       //忽略打包vue、element-plus
-      external: ["vue", "element-plus"],
+      external: ["vue", "element-plus", "axios"],
       input: ["index.js"],
       output: [
         {

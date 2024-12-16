@@ -5,7 +5,7 @@ import { BcDownlaodList } from './index'
 
 <template>
   <div>
-    <BcDownlaodList user-id="1964" :req-headers="{ authorization: '9c182ab7af4b4999b8adbcf86d209aa6' }" />
+    <BcDownlaodList user-id="1964" :req-headers="{ authorization: '0edf18cfd62848f7bcb81b7db0a8952c' }" />
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    example
-    <BcDownlaodList user-id="1964" :req-headers="{ authorization: '37673cdde24a4b93a6b3ef9796799346' }"/>
+    <el-button type="primary" @click="add">添加下载数据</el-button>
+    <BcDownlaodList user-id="1964" :req-headers="{ authorization: 'da51682e6a434b39bba59211a090a40a' }"/>
     <!-- <s-button @click="onClick" type="primary">button</s-button>
     <s-input v-model="value">
       <template #prepend>Http://</template>
@@ -10,10 +10,28 @@
 </template>
 
 <script setup>
-import { BcDownlaodList } from 'busi-coms-vue3-pnpm';
+import { BcDownlaodList, bcAddDownload } from 'busi-coms-vue3-pnpm';
 // import { ref } from 'vue'
 // const value = ref('')
 // const onClick = () => {
 //   console.log('click')
 // }
+const add = () => {
+    bcAddDownload(
+        {
+            dataExportReq: {
+                fileName: '文件名称'
+            },
+
+            queryType: 'core-test',
+            t: {
+                head: [['姓名', 'name']]
+            },
+            userId: '1964'
+        },
+        {
+            authorization: localStorage.getItem('uaatoken')
+        }
+    )
+}
 </script>
