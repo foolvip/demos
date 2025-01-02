@@ -75,6 +75,7 @@ export default defineConfig({
       entry: "./index.js",
       name: "businessComponent",
       formats: ["es", "cjs"],
+      // cssFileName: 'style', // 打包输出的css文件名, 默认为fileName即为package.json下的name
     },
   },
   resolve: {
