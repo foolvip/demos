@@ -1,0 +1,193 @@
+{
+  "name": "fullstack-demo",
+  "version": "1.0.0",
+  "description": "全栈项目示例，前端使用React，后端使用Python+Flask+MySQL",
+  "author": "AI Assistant",
+  "keywords": ["react", "python", "flask", "mysql", "fullstack", "skill"],
+  "category": "fullstack",
+  "type": "application",
+  "tags": ["web", "development", "demo"],
+  "homepage": "https://github.com/example/fullstack-demo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/fullstack-demo.git"
+  },
+  "license": "MIT",
+  "requirements": {
+    "frontend": {
+      "node": ">=16.0.0",
+      "npm": ">=8.0.0"
+    },
+    "backend": {
+      "python": ">=3.8.0",
+      "mysql": ">=8.0.0"
+    }
+  },
+  "dependencies": {
+    "frontend": [
+      "react",
+      "react-dom",
+      "vite",
+      "sass"
+    ],
+    "backend": [
+      "flask",
+      "flask-cors",
+      "pymysql",
+      "python-dotenv",
+      "cryptography"
+    ]
+  },
+  "features": [
+    "响应式设计，支持PC和移动端",
+    "完整的CRUD操作",
+    "MySQL数据库集成",
+    "前后端分离架构",
+    "Sass样式支持",
+    "环境变量配置"
+  ],
+  "api": {
+    "base_url": "http://localhost:5000/api",
+    "endpoints": [
+      {
+        "path": "/hello",
+        "method": "GET",
+        "description": "返回欢迎消息",
+        "response": {
+          "status": "200 OK",
+          "content_type": "application/json",
+          "example": {
+            "message": "Hello from Python backend with MySQL!",
+            "status": "success"
+          }
+        }
+      },
+      {
+        "path": "/items",
+        "method": "GET",
+        "description": "获取所有任务",
+        "response": {
+          "status": "200 OK",
+          "content_type": "application/json",
+          "example": {
+            "items": [],
+            "success": true
+          }
+        }
+      },
+      {
+        "path": "/items",
+        "method": "POST",
+        "description": "创建新任务",
+        "request": {
+          "content_type": "application/json",
+          "example": {
+            "name": "任务名称",
+            "description": "任务描述"
+          }
+        },
+        "response": {
+          "status": "201 Created",
+          "content_type": "application/json",
+          "example": {
+            "message": "Item created successfully",
+            "success": true,
+            "item_id": 1
+          }
+        }
+      },
+      {
+        "path": "/items/{id}",
+        "method": "PUT",
+        "description": "更新任务",
+        "request": {
+          "content_type": "application/json",
+          "example": {
+            "name": "新任务名称",
+            "description": "新任务描述"
+          }
+        },
+        "response": {
+          "status": "200 OK",
+          "content_type": "application/json",
+          "example": {
+            "message": "Item updated successfully",
+            "success": true
+          }
+        }
+      },
+      {
+        "path": "/items/{id}",
+        "method": "DELETE",
+        "description": "删除任务",
+        "response": {
+          "status": "200 OK",
+          "content_type": "application/json",
+          "example": {
+            "message": "Item deleted successfully",
+            "success": true
+          }
+        }
+      }
+    ]
+  },
+  "installation": {
+    "frontend": [
+      "cd frontend",
+      "npm install",
+      "npm run dev"
+    ],
+    "backend": [
+      "cd backend",
+      "pip install -r requirements.txt",
+      "python app.py"
+    ]
+  },
+  "configuration": {
+    "frontend": {
+      "file": "frontend/.env",
+      "variables": {
+        "VITE_API_URL": "API接口地址"
+      }
+    },
+    "backend": {
+      "file": "backend/.env",
+      "variables": {
+        "DB_HOST": "数据库主机地址",
+        "DB_PORT": "数据库端口",
+        "DB_USER": "数据库用户名",
+        "DB_PASSWORD": "数据库密码",
+        "DB_NAME": "数据库名称"
+      }
+    }
+  },
+  "usage": {
+    "description": "这是一个工作清单应用，支持创建、查看、编辑和删除任务。",
+    "steps": [
+      "启动后端服务: python app.py",
+      "启动前端服务: npm run dev",
+      "在浏览器中访问 http://localhost:3000",
+      "使用界面添加、编辑或删除任务"
+    ]
+  },
+  "development": {
+    "frontend": {
+      "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint"
+      }
+    },
+    "backend": {
+      "scripts": {
+        "run": "python app.py",
+        "test": "pytest"
+      }
+    }
+  },
+  "support": {
+    "issues": "https://github.com/example/fullstack-demo/issues",
+    "documentation": "https://github.com/example/fullstack-demo/wiki",
+    "contact": "support@example.com"
+  }
+}
